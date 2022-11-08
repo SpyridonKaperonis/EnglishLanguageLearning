@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov  6 09:58:36 2022
+Created on Sun Nov  5 09:58:36 2022
 
-@author: spyros
 """
 
 
@@ -20,10 +19,13 @@ from nltk.stem import WordNetLemmatizer
 import string
 from sklearn.linear_model import LinearRegression
 
+# In case you need to download nltk.
 # import nltk
+# nltk.download('english')
 # nltk.download('wordnet')
 # nltk.download('omw-1.4')
 
+#
 train_dataPath = ('~/Documents/Stevens/MachineLearning_695-A/Final_Project/feedback-prize-english-language-learning/train.csv')
 test_dataPath = ('~/Documents/Stevens/MachineLearning_695-A/Final_Project/feedback-prize-english-language-learning/test.csv')
 
@@ -31,7 +33,6 @@ test_dataPath = ('~/Documents/Stevens/MachineLearning_695-A/Final_Project/feedba
 def load_data(data):
     doc = pd.read_csv(data)
     return doc.copy(True)
-
 
 def tokenize_data(data):
     tokens = word_tokenize(data)
@@ -43,7 +44,7 @@ def remove_punctuation(data):
     symbols = "!\"#$%&()*+-.,/:;<=>?@[\]^_`{|}~\n"
     no_punctuation = data
     for i in symbols:
-        no_punctuation = np.char.replace(data, i, ' ')
+        no_punctuation = np.char.replace(no_punctuation, i, ' ')
     return no_punctuation
 def numbers_to_words(data):
     newData = []
@@ -71,36 +72,8 @@ def lemmatize_words(data):
 # Also, it makes all words lowercase.
 def data_preprocessing(data):
 
-    # # Loop through data and clean it.
-    # for i in range(0,len(df)):
-    #     text = df['full_text'][i]
-    #     tokens = word_tokenize(text)
-    #     # Make everything lowercase
-    #     tokens = [w.lower() for w in tokens]
-    #     # remove punctuation
-    #     table = str.maketrans('', '', string.punctuation)
-    #     stripped = [w.translate(table) for w in tokens]
-    #     # remove remaining tokens that are not alphabetic
-    #     words = [word for word in stripped if word.isalpha()]
-    #     # remove stopwords
-    #     stop_words = set(stopwords.words('english'))
-    #     words = [w for w in words if not w in stop_words]
-    #     # Lemmatize words
-    #     lemmatizer = WordNetLemmatizer()
-    #     newWords = []
-    #     for i in words:
-    #        lemmatizedWord = lemmatizer.lemmatize(i)
-    #        newWords.append(lemmatizedWord)
-      
-    #     # combine array elements into a string
-    #     words = ' '.join(words)
-    #     # place string bach in dataset
-    #     df = df.replace(df['full_text'][i], words)
-    
-    # return df
     df = data
     for i in data['full_text']:
-      
         ndata = tokenize_data(i)
         ndata = lowercase_data(ndata)
         ndata = remove_punctuation(ndata)
@@ -123,21 +96,9 @@ def split_test_validation_byID(data):
     return train_d, val_d
 
 
-# Don't use kfold for now. Let's first see how it performs without it. 
-# def implement_kFold(data):
-#     kf = KFold(n_splits=5, shuffle=True, random_state=1)    
-#     return kf.split(data)
-
-
-def lin_reg(x,y):
-   linreg = LinearRegression()
-   
-    
-
-def model1_pipeline(data):
+def model_for_Vocab_pipeline(data):
     dataf = load_data(data)
     train_data, validation_data = split_test_validation_byID(dataf)
-
     df = data_preprocessing(train_data)
     # X = tf_idf(df['full_text'])
     # Y = train_data['vocabulary']
@@ -147,6 +108,5 @@ def model1_pipeline(data):
     # return tfidf
     
 # model1_pipeline(train_dataPath)
-
-x = model1_pipeline(train_dataPath)
+x = model_for_Vocab_pipeline(train_dataPath)
 print(x)

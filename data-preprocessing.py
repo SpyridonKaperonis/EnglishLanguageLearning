@@ -82,11 +82,13 @@ def data_preprocessing(data):
         ndata = remove_punctuation(ndata)
         ndata = lemmatize_words(ndata)
         ndata = ' '.join(ndata)
+        ndata = remove_punctuation(ndata)
         df = df.replace(i, ndata)
+        
     return df
     
 def tf_idf(data):
-    tfidfVectorizer = TfidfVectorizer(use_idf=True)
+    tfidfVectorizer = TfidfVectorizer(use_idf=True, input=corpus)
     tfidf = tfidfVectorizer.fit_transform(data)
     df = pd.DataFrame(tfidf.toarray())
     return tfidf

@@ -10,7 +10,7 @@ The ELLIPSE corpus consists of 3911 argumentative essays written by 8th - 12th g
 ### LSTM
 ### Support Vector Machine
 
-<img src='./imagesGit/classifiersTree.png' alt='classifiers tree' width='500' />
+<img src='./imagesGit/classifiersTree.png' alt='classifiers tree' width='700' />
 
 
 Develops support vector machine algorithm using a tree like structure. 

@@ -4,6 +4,11 @@
 ### LSTM
 ### Support Vector Machine
 
+<img src='./imagesGit/classifiersTree.png' alt='classifiers tree' width='500' />
+
+
+Develops support vector machine algorithm using a tree like structure. 
+The Evaluation of English language is a multiclass problem. Using the tree like structure the problem is converted into many binary problems. 
 **Data Exploration**
 
 <img src='./imagesGit/dataExploration.png' alt='correlation matrix' width='300' />

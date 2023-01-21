@@ -4,7 +4,7 @@
 
 The ELLIPSE corpus consists of 3911 argumentative essays written by 8th - 12th grade English Language Learners. The essays are scored using these analytic measures: syntax, cohesion, phraseology, grammar, conventions, and vocabulary.
 
-[Feedback Prize English Language Learning]('https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data')
+[Feedback Prize English Language Learning](https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data)
 
 ### Neural Network
 ### LSTM
